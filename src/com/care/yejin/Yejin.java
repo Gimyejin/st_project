@@ -37,7 +37,7 @@ public class Yejin {
 	public void array() {
 		Member member = new Member();
 		while (true) {
-			System.out.println("1.학생등록 2.학생수정 3.탈퇴 4.개인정보기 5.모두보기 6.종료");
+			System.out.println("1.학생등록 2.학생수정 3.탈퇴 4.개인정보보기 5.모두보기 6.종료");
 			num = input.nextInt();
 
 			switch (num) {
@@ -79,6 +79,7 @@ public class Yejin {
 					System.out.println("비밀번호가 틀렸습니다.\n");
 				break;
 			case 4: // 1인 정보
+				memberView();
 				break;
 			case 5:// 5.모든정보보기
 
@@ -95,6 +96,26 @@ public class Yejin {
 
 		}
 
+	}
+
+	public void memberView() {
+		String stId;
+		System.out.println("확안하고자 하는 아이디 입력");
+		stId = input.next();
+		int i;
+		for (i = 0; i < list.size(); i++) {
+			if (stId.endsWith(list.get(i).getId())) {
+				System.out.println("이름: " + list.get(i).getName());
+				System.out.println("아이디: " + list.get(i).getId());
+				System.out.println("비밀번호: " + list.get(i).getPw());
+				System.out.println("주소: " + list.get(i).getAddr());
+				System.out.println("전화번호: " + list.get(i).getPhNum());
+				System.out.println("-------------------------------------");
+				break;
+			}
+		}
+		if (i == list.size())
+			System.out.println("찾는 학번이 없습니다.");
 	}
 
 	public void register() {
