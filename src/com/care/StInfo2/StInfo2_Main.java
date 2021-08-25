@@ -18,18 +18,31 @@ public class StInfo2_Main {
 			switch(num) {
 			case 1: 
 				StInfo2 s = new StInfo2();
-				System.out.println("이름 입력");
-				name = input.next();
-				System.out.println("나이 입력");
-				age = input.nextInt();
-				System.out.println("주소 입력");
-				addr = input.next();
+				if(arr.size()!=0) {
+					while(true) {
+						System.out.println("이름 입력");
+						name = input.next();
+						if(arr.contains(name)) {
+							System.out.println("이미 등록된 이름입니다");
+							continue;	
+						}
+						break;
+					}
+				}else {
+					System.out.println("이름 입력");
+					name = input.next();
+				}
+					System.out.println("나이 입력");
+					age = input.nextInt();
+					System.out.println("주소 입력");
+					addr = input.next();
+					
+					s.setAge(age); s.setName(name); s.setAddr(addr);
+					
+					arr.add(s);
+					System.out.println("등록 되었습니다");
+					break;
 				
-				s.setAge(age); s.setName(name); s.setAddr(addr);
-				
-				arr.add(s);
-				System.out.println("등록 되었습니다");
-				break;
 			case 2:
 				for(int i=0; i < arr.size(); i++) {
 					StInfo2 ss= arr.get(i);
