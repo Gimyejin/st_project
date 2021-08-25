@@ -9,11 +9,11 @@ public class StInfo2_Main {
 
 		Scanner input = new Scanner(System.in);
 		ArrayList<StInfo2> arr = new ArrayList<StInfo2>();
-		String name;
+		String name, addr;
 		int age;
 
 		while(true) {
-			System.out.println("1.등록 2.확인");
+			System.out.println("1.학생등록 2.등록확인");
 			int num = input.nextInt();
 			switch(num) {
 			case 1: 
@@ -22,8 +22,10 @@ public class StInfo2_Main {
 				name = input.next();
 				System.out.println("나이 입력");
 				age = input.nextInt();
+				System.out.println("주소 입력");
+				addr = input.next();
 				
-				s.setAge(age); s.setName(name);
+				s.setAge(age); s.setName(name); s.setAddr(addr);
 				
 				arr.add(s);
 				System.out.println("등록 되었습니다");
@@ -33,6 +35,7 @@ public class StInfo2_Main {
 					StInfo2 ss= arr.get(i);
 					System.out.println("이름 : "+ss.getName());
 					System.out.println("나이 : "+ss.getAge());
+					System.out.println("주소 : "+ss.getAddr());
 					System.out.println("--------------------");
 				}
 				break;
@@ -41,5 +44,6 @@ public class StInfo2_Main {
 		}
 	
 	}
+	
 
 }
