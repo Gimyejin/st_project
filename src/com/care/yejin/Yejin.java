@@ -107,12 +107,23 @@ public class Yejin {
 	public void register() {
 		System.out.print("이름 > ");
 		name = input.next();
-		while(true) {
-		System.out.print("아이디 > ");
-		id = input.next();
-			if(id.equals(addr)) {
-			
+		while (true) {
+			System.out.print("아이디 > ");
+			id = input.next();
+			if (list.size() != 0) {
+				int i;
+				for (i = 0; i < list.size(); i++) {
+					if (list.get(i).getId().equals(id)) {
+						System.out.println("이미 존재하는 아이디입니다.");
+						break;
+					}
+				}
+				//동일한 아이디가 없다면 i는 
+				if(i !=list.size()) {//아이디가 존재할경우 다시 입력받게 하자
+					continue;//다시 반복됨
+				}
 			}
+			break;
 		}
 		System.out.print("비밀번호 > ");
 		pw = input.next();
@@ -127,6 +138,8 @@ public class Yejin {
 		member.setPw(pw);
 		member.setAddr(addr);
 		member.setPhNum(phNum);
+		list.add(member);// member변수의 주소가 list에 담김
+		System.out.println("저장완료");
 	}
 
 //==========================================================================//
