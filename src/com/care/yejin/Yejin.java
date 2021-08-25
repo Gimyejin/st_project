@@ -21,6 +21,7 @@ public class Yejin {
 			break;
 		case 2:
 			Hash gohashmap = new Hash();
+			gohashmap.hash();
 			break;
 		}
 	}
@@ -92,7 +93,6 @@ public class Yejin {
 				memberView();
 				break;
 			case 5:// 5.모든정보보기
-
 				if (list.isEmpty())
 					System.out.println("등록된 내용이 없습니다.\n");
 				else {
