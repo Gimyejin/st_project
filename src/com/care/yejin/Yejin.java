@@ -10,13 +10,9 @@ public class Yejin {
 	 * 됩니다. 4. 모든 회원 정보보기
 	 */
 	Scanner input = new Scanner(System.in);
-	ArrayList<Member> list = new ArrayList<Member>();
-	HashMap<Integer, String> map = new HashMap<Integer, String>();
-	Member member = new Member();
-	int num;
-	String name, id, pw, addr, phNum = "";
+	ArrayList<Member> list;
 
-	public Yejin() {
+	public void display() {
 		System.out.println("1.ArrayList\t2.HashMap");
 		num = input.nextInt();
 		switch (num) {
@@ -29,46 +25,27 @@ public class Yejin {
 		}
 	}
 
+	HashMap<Integer, String> map = new HashMap<Integer, String>();
+	Member member = new Member();
+	int num;
+	String name, id, pw, addr, phNum = "";
+
+	public Yejin() {
+		list = new ArrayList<Member>();
+	}
+
 	public void array() {
 		Member member = new Member();
 		while (true) {
-			System.out.println("1.회원등록 2.회원수정 3.회원탈퇴 4.모든정보보기");
+			System.out.println("1.학생등록 2.학생수정 3.탈퇴 4.개인정보기 5.모두보기 6.종료");
 			num = input.nextInt();
 
 			switch (num) {
 			case 1:
-				if (list.isEmpty()) {
-					System.out.println("[회 원 가 입]");
-
-					/*
-					 * System.out.print("이름 > "); name = input.next();
-					 */
-					System.out.print("아이디 > ");
-					id = input.next();
-					System.out.print("비밀번호 > ");
-					pw = input.next();
-					System.out.print("주소 > ");
-					addr = input.next();
-					System.out.print("전화번호 > ");
-					phNum = input.next();
-
-					member.setName("김예진");
-					member.setId(id);
-					member.setPw(pw);
-					member.setAddr(addr);
-					member.setPhNum(phNum);
-
-					list.add(member);
-
-				} else {
-					if (member.getId().equals(id)) {
-						System.out.println("사용할 수 없는 아이디입니다.");
-					}
-				}
-
+				register();// 등록메소드
 				break;
 			case 2:// 회원정보 수정
-				System.out.println(member.getName()+ "님의 정보를 수정합니다.");
+				System.out.println(member.getName() + "님의 정보를 수정합니다.");
 				System.out.println("1.비밀번호 변경 2.주소 변경 3.전화번호 변경");
 				num = input.nextInt();
 				switch (num) {//
@@ -98,9 +75,12 @@ public class Yejin {
 				if (member.getPw().equals(pwd)) {
 					list.clear();
 					System.out.println("탈퇴가 완료되었습니다\n");
-				}else System.out.println("비밀번호가 틀렸습니다.\n");
+				} else
+					System.out.println("비밀번호가 틀렸습니다.\n");
 				break;
-			case 4:// 4.모든정보보기
+			case 4: // 1인 정보
+				break;
+			case 5:// 5.모든정보보기
 				if (list.isEmpty())
 					System.out.println("등록된 내용이 없습니다.\n");
 				else {
@@ -115,11 +95,40 @@ public class Yejin {
 					}
 				}
 				break;
+			case 6:
+				System.out.println("학생관리를 종료합니다");
+				return;
 			}
 
 		}
 
 	}
+
+	public void register() {
+		System.out.print("이름 > ");
+		name = input.next();
+		while(true) {
+		System.out.print("아이디 > ");
+		id = input.next();
+			if(id.equals(addr)) {
+			
+			}
+		}
+		System.out.print("비밀번호 > ");
+		pw = input.next();
+		System.out.print("주소 > ");
+		addr = input.next();
+		System.out.print("전화번호 > ");
+		phNum = input.next();
+
+		Member member = new Member();
+		member.setName(name);
+		member.setId(id);
+		member.setPw(pw);
+		member.setAddr(addr);
+		member.setPhNum(phNum);
+	}
+
 //==========================================================================//
 	public void hash() {
 		Member member = new Member();
@@ -144,16 +153,22 @@ public class Yejin {
 					System.out.print("전화번호 > ");
 					phNum = input.next();
 
-					member.setName("김예진"); 	map.put(0, "김예진");
-					member.setId(id);			map.put(1, id);
-					member.setPw(pw);			map.put(2, pw);
-					member.setAddr(addr);		map.put(3, addr);
-					member.setPhNum(phNum);		map.put(4, phNum);
+					member.setName("김예진");
+					map.put(0, "김예진");
+					member.setId(id);
+					map.put(1, id);
+					member.setPw(pw);
+					map.put(2, pw);
+					member.setAddr(addr);
+					map.put(3, addr);
+					member.setPhNum(phNum);
+					map.put(4, phNum);
 				} else {
-						if (member.getId().equals(id)) {
+					if (member.getId().equals(id)) {
 						System.out.println("사용할 수 없는 아이디입니다.");
-						}
-					}break;
+					}
+				}
+				break;
 			case 2:// 회원정보 수정
 				System.out.println(member.getName() + "님의 정보를 수정합니다.");
 				System.out.println("1.비밀번호 변경 2.주소 변경 3.전화번호 변경");
@@ -162,19 +177,19 @@ public class Yejin {
 				case 1:// 비번
 					System.out.println("변경할 비밀 번호를 입력하시오.");
 					String pwd = input.next();
-					map.put(2,pwd);
+					map.put(2, pwd);
 					changePrint("비밀번호");
 					break;
 				case 2:
 					System.out.println("변경할 주소를 입력하시오.");
 					String address = input.next();
-					map.put(3,address);
+					map.put(3, address);
 					changePrint("주소");
 					break;
 				case 3:
 					System.out.println("변경할 전화 번호를 입력하시오.");
 					String phone = input.next();
-					map.put(4,phone);
+					map.put(4, phone);
 					changePrint("전화번호");
 					break;
 				}
@@ -185,26 +200,27 @@ public class Yejin {
 				if (member.getPw().equals(pwd)) {
 					map.clear();
 					System.out.println("탈퇴가 완료되었습니다\n");
-				}else System.out.println("비밀번호가 틀렸습니다.\n");
+				} else
+					System.out.println("비밀번호가 틀렸습니다.\n");
 				break;
 			case 4:// 4.모든정보보기
 				if (map.isEmpty())
 					System.out.println("등록된 내용이 없습니다.\n");
 				else {
-				
-						
-						System.out.println("이름: " + map.get(0));
-						System.out.println("아이디: " + map.get(1));
-						System.out.println("비밀번호: " + map.get(2));
-						System.out.println("주소: " + map.get(3));
-						System.out.println("전화번호: " +map.get(4));
-						System.out.println();
-					
+
+					System.out.println("이름: " + map.get(0));
+					System.out.println("아이디: " + map.get(1));
+					System.out.println("비밀번호: " + map.get(2));
+					System.out.println("주소: " + map.get(3));
+					System.out.println("전화번호: " + map.get(4));
+					System.out.println();
+
 				}
 				break;
-				}
 			}
 		}
+	}
+
 	public void changePrint(String name) {
 		System.out.println(name + "이(가) 변경되었습니다");
 

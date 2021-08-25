@@ -16,6 +16,7 @@ public class MainClass {
 			switch(num) {
 			case 1:
 				Yejin y = new Yejin();
+				y.display();
 				break;
 			case 2:break;
 			case 3:break;
