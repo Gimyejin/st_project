@@ -81,18 +81,11 @@ public class Yejin {
 			case 4: // 1인 정보
 				break;
 			case 5:// 5.모든정보보기
+
 				if (list.isEmpty())
 					System.out.println("등록된 내용이 없습니다.\n");
 				else {
-					for (int i = 0; i < list.size(); i++) {
-						Member mem = list.get(i);
-						System.out.println("이름: " + mem.getName());
-						System.out.println("아이디: " + mem.getId());
-						System.out.println("비밀번호: " + mem.getPw());
-						System.out.println("주소: " + mem.getAddr());
-						System.out.println("전화번호: " + mem.getPhNum());
-						System.out.println();
-					}
+					allList();
 				}
 				break;
 			case 6:
@@ -118,9 +111,9 @@ public class Yejin {
 						break;
 					}
 				}
-				//동일한 아이디가 없다면 i는 
-				if(i !=list.size()) {//아이디가 존재할경우 다시 입력받게 하자
-					continue;//다시 반복됨
+				// 동일한 아이디가 없다면 i는
+				if (i != list.size()) {// 아이디가 존재할경우 다시 입력받게 하자
+					continue;// 다시 반복됨
 				}
 			}
 			break;
@@ -140,6 +133,17 @@ public class Yejin {
 		member.setPhNum(phNum);
 		list.add(member);// member변수의 주소가 list에 담김
 		System.out.println("저장완료");
+	}
+
+	public void allList() {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println("이름: " + list.get(i).getName());
+			System.out.println("아이디: " + list.get(i).getId());
+			System.out.println("비밀번호: " + list.get(i).getPw());
+			System.out.println("주소: " + list.get(i).getAddr());
+			System.out.println("전화번호: " + list.get(i).getPhNum());
+			System.out.println("-------------------------------------");
+		}
 	}
 
 //==========================================================================//
